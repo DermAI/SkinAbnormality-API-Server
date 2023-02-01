@@ -25,7 +25,7 @@ class Packet(pydantic.BaseModel):
   pass
 
 model = advanced.model.downstreamModel(weight={"backbone":"MobileNet_V2_Weights.IMAGENET1K_V1", "senior":None})
-model.loadWeight("static\Fined-Tuning-MobileNet_V2\pretrained_weight.pickle")
+model.loadWeight("./static/Fined-Tuning-MobileNet_V2/pretrained_weight.pickle")
 transform = advanced.model.defineTransform(inference=True)
 loadPicture = lambda url: PIL.Image.open(requests.get(url, stream=True).raw)
 runSoftmax = lambda tensor: torch.nn.Softmax(1)(tensor)
